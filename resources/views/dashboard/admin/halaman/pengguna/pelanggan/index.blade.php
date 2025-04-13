@@ -36,6 +36,10 @@
                                         <a href="/admin/pelanggan/{{ $item->id }}" class="btn btn-info btn-sm">
                                             Detail
                                         </a>
+                                        <a href="/admin/pelanggan/{{ $item->id }}/kelengkapan-dokumen"
+                                            class="btn btn-info btn-sm text-nowrap">
+                                            Dokumen
+                                        </a>
                                         <a href="/admin/pelanggan/{{ $item->id }}/edit"
                                             class="btn btn-warning btn-sm">Edit</a>
                                         <form action="/admin/pelanggan/{{ $item->id }}" method="POST">

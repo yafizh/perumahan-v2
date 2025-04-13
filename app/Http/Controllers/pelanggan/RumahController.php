@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\pelanggan;
 
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class RumahController extends Controller

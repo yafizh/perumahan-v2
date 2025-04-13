@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pelanggan;
+use App\Models\PelangganKelengkapanDokumen;
 use App\Models\Pengguna;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -141,5 +142,38 @@ class PelangganController extends Controller
         Pengguna::destroy($pelanggan->pengguna->id);
         Pelanggan::destroy($pelanggan->id);
         return redirect('/admin/pelanggan');
+    }
+
+    public function kelengkapanDokumen(Pelanggan $pelanggan)
+    {
+        return view('dashboard.admin.halaman.pengguna.pelanggan.kelengkapan-dokumen', [
+            'pelanggan' => $pelanggan,
+            'kelengkapanDokumen' => $pelanggan->kelengkapanDokumen
+        ]);
+    }
+
+    public function updateKelengkapanDokumen(Request $request, Pelanggan $pelanggan)
+    {
+        $data = $request->validate([
+            'ktp_status'                   => 'in:Valid,Invalid',
+            'slip_gaji_status'             => 'in:Valid,Invalid',
+            'buku_rekening_status'         => 'in:Valid,Invalid',
+            'npwp_status'                  => 'in:Valid,Invalid',
+            'ktp_pasangan_status'          => 'in:Valid,Invalid',
+            'surat_nikah_cerai_status'     => 'in:Valid,Invalid',
+            'ktp_keterangan'               => 'string',
+            'slip_gaji_keterangan'         => 'string',
+            'buku_rekening_keterangan'     => 'string',
+            'npwp_keterangan'              => 'string',
+            'ktp_pasangan_keterangan'      => 'string',
+            'surat_nikah_cerai_keterangan' => 'string',
+        ]);
+
+        PelangganKelengkapanDokumen::updateOrCreate(
+            ['id_pelanggan' => $pelanggan->id],
+            $data,
+        );
+
+        return redirect("/admin/pelanggan/{$pelanggan->id}/kelengkapan-dokumen");
     }
 }

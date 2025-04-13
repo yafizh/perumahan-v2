@@ -36,4 +36,9 @@ class Pelanggan extends Model
             ->orderBy('id', 'DESC')
             ->get();
     }
+
+    public function kelengkapanDokumen()
+    {
+        return $this->hasOne(PelangganKelengkapanDokumen::class, 'id_pelanggan', 'id');
+    }
 }

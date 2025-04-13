@@ -33,6 +33,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\LoginLogoutController;
+use App\Http\Controllers\pelanggan\KelengkapanDokumenController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -89,8 +90,14 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resource('/promo', AdminPromoController::class);
     Route::resource('/promo/{promo}/rumah', AdminPromoRumahController::class);
 
-    Route::get('/pelanggan/{pelanggan}/rumah', [AdminPelangganController::class, 'rumah']);
     Route::resource('/pelanggan', AdminPelangganController::class);
+    Route::prefix('pelanggan')
+        ->controller(AdminPelangganController::class)
+        ->group(function () {
+            Route::get('/{pelanggan}/kelengkapan-dokumen', [AdminPelangganController::class, 'kelengkapanDokumen']);
+            Route::put('/{pelanggan}/kelengkapan-dokumen', [AdminPelangganController::class, 'updateKelengkapanDokumen']);
+            Route::get('/{pelanggan}/rumah', [AdminPelangganController::class, 'rumah']);
+        });
 
     Route::prefix('laporan')->controller(AdminLaporanController::class)->group(function () {
         Route::get('/rumah', 'rumah');
@@ -164,6 +171,12 @@ Route::prefix('pelanggan')->middleware('auth')->group(function () {
         Route::get('/pemesanan-rumah', 'index');
         Route::get('/pemesanan-rumah/create', 'create');
         Route::post('/pemesanan-rumah', 'store');
+    });
+
+    Route::controller(KelengkapanDokumenController::class)->group(function () {
+        Route::get('/kelengkapan-dokumen', 'index');
+        Route::get('/kelengkapan-dokumen/edit', 'edit');
+        Route::put('/kelengkapan-dokumen', 'update');
     });
 });
 
