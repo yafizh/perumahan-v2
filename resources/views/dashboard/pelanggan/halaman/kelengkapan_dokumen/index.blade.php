@@ -24,7 +24,7 @@
                 <tbody>
                     <tr>
                         <th class="align-middle text-nowrap">
-                            <a href="{{ asset('storage/' . $kelengkapanDokumen->ktp) }}" target="_blank">
+                            <a href="{{ asset('storage/' . $kelengkapanDokumen?->ktp) }}" target="_blank">
                                 Kartu Tanda Penduduk
                             </a>
                         </th>
@@ -43,14 +43,14 @@
                     </tr>
                     <tr>
                         <th class="align-middle text-nowrap">
-                            <a href="{{ asset('storage/' . $kelengkapanDokumen->slip_gaji) }}" target="_blank">
+                            <a href="{{ asset('storage/' . $kelengkapanDokumen?->slip_gaji) }}" target="_blank">
                                 Slip Gaji
                             </a>
                         </th>
                         <td class="text-center align-middle">
                             @if ($kelengkapanDokumen?->slip_gaji_status == 'Valid')
                                 <span class="badge text-bg-success">{{ $kelengkapanDokumen?->slip_gaji_status }}</span>
-                            @elseif ($kelengkapanDokumen->slip_gaji_status == 'Invalid')
+                            @elseif ($kelengkapanDokumen?->slip_gaji_status == 'Invalid')
                                 <span class="badge text-bg-danger">{{ $kelengkapanDokumen?->slip_gaji_status }}</span>
                             @elseif ($kelengkapanDokumen?->ktp_status == 'Pending')
                                 <span class="badge text-bg-warning">{{ $kelengkapanDokumen?->slip_gaji_status }}</span>
@@ -62,7 +62,7 @@
                     </tr>
                     <tr>
                         <th class="align-middle text-nowrap">
-                            <a href="{{ asset('storage/' . $kelengkapanDokumen->buku_rekening) }}" target="_blank">
+                            <a href="{{ asset('storage/' . $kelengkapanDokumen?->buku_rekening) }}" target="_blank">
                                 Buku Rekening Bank
                             </a>
                         </th>
@@ -81,7 +81,7 @@
                     </tr>
                     <tr>
                         <th class="align-middle text-nowrap">
-                            <a href="{{ asset('storage/' . $kelengkapanDokumen->npwp) }}" target="_blank">
+                            <a href="{{ asset('storage/' . $kelengkapanDokumen?->npwp) }}" target="_blank">
                                 Nomor Pokok Wajib Pajak (NPWP)
                             </a>
                         </th>
@@ -100,7 +100,7 @@
                     </tr>
                     <tr>
                         <th class="align-middle text-nowrap">
-                            <a href="{{ asset('storage/' . $kelengkapanDokumen->ktp_pasangan) }}" target="_blank">
+                            <a href="{{ asset('storage/' . $kelengkapanDokumen?->ktp_pasangan) }}" target="_blank">
                                 Kartu Tanda Penduduk (KTP) Pasangan
                             </a>
                         </th>
@@ -119,7 +119,7 @@
                     </tr>
                     <tr>
                         <th class="align-middle text-nowrap">
-                            <a href="{{ asset('storage/' . $kelengkapanDokumen->surat_nikah_cerai) }}" target="_blank">
+                            <a href="{{ asset('storage/' . $kelengkapanDokumen?->surat_nikah_cerai) }}" target="_blank">
                                 Surat Nikah / Surat Cerai
                             </a>
                         </th>
