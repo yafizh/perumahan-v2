@@ -57,8 +57,8 @@ class DatabaseSeeder extends Seeder
         //     'foto'          => ''
         // ]);
 
-        // $this->call(BlokPerumahanSeeder::class);
-        // $this->call(RumahSeeder::class);
-        // $this->call(PelangganSeeder::class);
+        $this->call(BlokPerumahanSeeder::class);
+        $this->call(RumahSeeder::class);
+        $this->call(PelangganSeeder::class);
     }
 }
