@@ -65,11 +65,11 @@
     </style>
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <!-- Navbar-->
     @include('landing.partials.navbar')
 
-    <main>
+    <main class="flex-grow-1" style="flex:1">
         @yield('content')
     </main>
 
